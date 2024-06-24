@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy the requirements.txt file into the container
 COPY requirements.txt ./
@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Run the script
-CMD ["python", "plugin.py"]
+CMD ["python", "/app/plugin.py"]
