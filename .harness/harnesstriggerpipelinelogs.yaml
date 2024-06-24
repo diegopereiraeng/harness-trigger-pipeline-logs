@@ -38,3 +38,34 @@ pipeline:
                     tags:
                       - <+codebase.shortCommitSha>
                     caching: true
+    - stage:
+        name: trigger pipeline e2e
+        identifier: trigger_pipeline_e2e
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Plugin
+                  name: Trigger Pipeline
+                  identifier: Trigger_Pipeline
+                  spec:
+                    connectorRef: account.DockerHubDiego
+                    image: diegokoala/harness-trigger-pipeline-logs
+                    settings:
+                      API_KEY: abc
+                      ACCOUNT_IDENTIFIER: 6_vVHzo9Qeu9fXvj-AcbCQ
+                      ORG_IDENTIFIER: SE_Sandbox
+                      PROJECT_IDENTIFIER: Platform_Engineering
+                      PIPELINE_IDENTIFIER: financebackenddeploy
+                      PIPELINE_YAML: "pipeline:\\n  identifier: financebackenddeploy\\n  properties:\\n    ci:\\n      codebase:\\n        build:\\n          spec:\\n            branch: main\\n          type: branch"
