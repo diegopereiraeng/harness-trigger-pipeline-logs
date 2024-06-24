@@ -1,0 +1,40 @@
+pipeline:
+  name: harness-trigger-pipeline-logs
+  identifier: harnesstriggerpipelinelogs
+  projectIdentifier: Platform_Engineering
+  orgIdentifier: SE_Sandbox
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.diegogithubapp
+        repoName: harness-trigger-pipeline-logs
+        build: <+input>
+  stages:
+    - stage:
+        name: plugin image builder
+        identifier: plugin_image_builder
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry
+                  identifier: BuildAndPushDockerRegistry
+                  spec:
+                    connectorRef: account.DockerHubDiego
+                    repo: diegokoala/harness-trigger-pipeline-logs
+                    tags:
+                      - <+codebase.shortCommitSha>
+                    caching: true
