@@ -12,7 +12,7 @@
       image: diegokoala/harness-trigger-pipeline-logs:<+pipeline.stages.plugin_image_builder.spec.execution.steps.BuildAndPushDockerRegistry.artifact_BuildAndPushDockerRegistry.stepArtifacts.publishedImageArtifacts[0].tag>
       settings:
         API_KEY: <+secrets.getValue("diego_pat")>
-        ACCOUNT_IDENTIFIER: 6_vVHzo9Qeu9fXvj-AcbCQ
+        ACCOUNT_IDENTIFIER: <account_id>
         ORG_IDENTIFIER: SE_Sandbox
         PROJECT_IDENTIFIER: Platform_Engineering
         PIPELINE_IDENTIFIER: financebackenddeploy
