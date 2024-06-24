@@ -101,6 +101,7 @@ def trigger_pipeline():
     }
     
     formatted_yaml = format_pipeline_yaml(PIPELINE_YAML)
+    print(formatted_yaml)
     
     response = requests.post(url, headers=headers, data=formatted_yaml)
     return response.json()
