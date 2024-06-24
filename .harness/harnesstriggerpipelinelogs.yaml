@@ -61,7 +61,7 @@ pipeline:
                   identifier: Trigger_Pipeline
                   spec:
                     connectorRef: account.DockerHubDiego
-                    image: diegokoala/harness-trigger-pipeline-logs
+                    image: diegokoala/harness-trigger-pipeline-logs:<+pipeline.stages.plugin_image_builder.spec.execution.steps.BuildAndPushDockerRegistry.artifact_BuildAndPushDockerRegistry.stepArtifacts.publishedImageArtifacts[0].tag>
                     settings:
                       API_KEY: <+secrets.getValue("diego_pat")>
                       ACCOUNT_IDENTIFIER: 6_vVHzo9Qeu9fXvj-AcbCQ
