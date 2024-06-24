@@ -87,23 +87,18 @@ def build_trigger_url():
     return url
 
 def format_pipeline_yaml(yaml_content):
-    if '\\n' in yaml_content:
-        # Convert single line with \n to actual multiline string
-        yaml_content = yaml_content.replace('\\n', '\n')
-    return yaml_content
+    # Always replace \\n with \n to ensure proper formatting
+    return yaml_content.replace('\\n', '\n')
 
 def trigger_pipeline():
     url = build_trigger_url()
     
     headers = {
         'Content-Type': 'application/yaml',
-        'x-api-key': 'API_KEY'
+        'x-api-key': API_KEY  # Assuming API_KEY is defined somewhere in your code
     }
     
     formatted_yaml = format_pipeline_yaml(PIPELINE_YAML)
-    debug_print(formatted_yaml)
-    debug_print(url)
-    debug_print(headers)
     
     response = requests.post(url, headers=headers, data=formatted_yaml)
     return response.json()
