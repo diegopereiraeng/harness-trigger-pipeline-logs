@@ -69,3 +69,4 @@ pipeline:
                       PROJECT_IDENTIFIER: Platform_Engineering
                       PIPELINE_IDENTIFIER: financebackenddeploy
                       PIPELINE_YAML: "pipeline:\\n  identifier: financebackenddeploy\\n  properties:\\n    ci:\\n      codebase:\\n        build:\\n          spec:\\n            branch: main\\n          type: branch"
+                      DEBUG: "true"
