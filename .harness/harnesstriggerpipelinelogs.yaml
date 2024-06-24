@@ -63,7 +63,7 @@ pipeline:
                     connectorRef: account.DockerHubDiego
                     image: diegokoala/harness-trigger-pipeline-logs
                     settings:
-                      API_KEY: abc
+                      API_KEY: <+secrets.getValue("diego_pat")>
                       ACCOUNT_IDENTIFIER: 6_vVHzo9Qeu9fXvj-AcbCQ
                       ORG_IDENTIFIER: SE_Sandbox
                       PROJECT_IDENTIFIER: Platform_Engineering
